@@ -19,11 +19,6 @@ use App\Http\Controllers\Api\ClassementController;
 
 Route::get('posts', [PostController::class, 'index']);
 
-// Route pour Modifier un post
-Route::put('posts/{post}', [PostController::class, 'update']);
-
-// Route pour supprimer un post
-Route::delete('posts/{post}', [PostController::class, 'destroy']);
 
 //Inscrire  un nouvelle utilisateur
 Route::post('/register', [UserController::class, 'register']);
@@ -45,4 +40,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Route pour créer un post
     Route::post('posts/create', [PostController::class, 'store']);
+
+    // Route pour Modifier un post
+    Route::put('posts/{post}', [PostController::class, 'update']);
+
+    // Route pour supprimer un post
+    Route::delete('posts/{post}', [PostController::class, 'destroy']);
 });

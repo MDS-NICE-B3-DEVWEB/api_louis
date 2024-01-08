@@ -15,7 +15,7 @@ class PostController extends Controller
     // on recupere les posts pour les afficher
        try{
         $query = Post::query();
-        $perPage = 1;
+        $perPage = 3;
         $page = $request->input('page', 1); 
         $search = $request->input('search');
     
