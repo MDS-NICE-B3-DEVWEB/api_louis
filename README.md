@@ -56,32 +56,42 @@ Utilisation de l'API
 
 Inscription d'un nouvel utilisateur :
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"name": "votre_nom", "email": "votre_email", "password": "votre_mot_de_passe"}' http://localhost:8000/register
+curl -X POST -H "Content-Type: application/json" -d '{"name": "votre_nom", "email": "votre_email", "password": "votre_mot_de_passe"}' http://164.90.163.120:8000/api/register
 ```
 
 Connexion d'un utilisateur :
 ```bash 
-curl -X POST -H "Content-Type: application/json" -d '{"email": "votre_email", "password": "votre_mot_de_passe"}' http://localhost:8000/login
+curl -X POST -H "Content-Type: application/json" -d '{"email": "votre_email", "password": "votre_mot_de_passe"}' http://164.90.163.120:8000/api/login
 ```
 
 Récupérer le classement des équipes :
 ```bash
-curl -X GET http://localhost:8000/classement
+curl -X GET -d '{"id_saison": "id de la saison en int (269 pour la saison 2023-2024"} http://164.90.163.120:8000/api/classement
 ```
 
 Récupérer les informations d'une équipe :
 ```bash
-curl -X GET http://localhost:8000/equipe
+curl -X GET -d '{"id_saison": "id de la saison en int (269 pour la saison 2023-2024", "id_equipe": "id de l'équipe (59 pour l'om)"}
+http://164.90.163.120:8000/api//equipe
 ```
 
-Retourner les informations de l'utilisateur connecté :
+Retourner les informations d'un post :
 ```bash
-curl -X GET -H "Authorization: Bearer VOTRE_TOKEN" http://localhost:8000/user
+curl -X GET -H  http://164.90.163.120:8000/api/post
 ```
 
 Créer un nouveau post :
 ```bash
-curl -X POST -H "Authorization: Bearer VOTRE_TOKEN" -H "Content-Type: application/json" -d '{"title": "titre_du_post", "content": "contenu_du_post"}' http://localhost:8000/posts/create
+curl -X POST -H "Authorization: Bearer VOTRE_TOKEN" -H "Content-Type: application/json" -d '{"title": "titre_du_post", "content": "contenu_du_post"}' http://164.90.163.120:8000/api/posts/create
+```
+
+Supprime un post :
+```bash
+curl -X DEL -H "Authorization: Bearer VOTRE_TOKEN" -H "Content-Type: application/json" -http://164.90.163.120:8000/api/posts/{post}
+```
+Modifie un post :
+```bash
+curl -X PUT -H "Authorization: Bearer VOTRE_TOKEN" -H "Content-Type: application/json" -d '{"title": "nouveau_titre_du_post", "content": "nouveau_contenu_du_post"}' http://164.90.163.120:8000/api/posts/{post}
 ```
 
 Collection des routes API PostMan/Insomnia ...
