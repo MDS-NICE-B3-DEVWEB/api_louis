@@ -12,54 +12,76 @@ composer install
 ```
 
 # Configuration de l'environnement
-```cp .env.example .env```
+```bash 
+cp .env.example .env
+```
 
 # Génération de la clé d'application
-```php artisan key:generate```
+```bash 
+php artisan key:generate
+```
 
 # Exécution des migrations pour créer la structure de la base de données
-```php artisan migrate```
+```bash
+php artisan migrate
+```
 Scripts disponibles
 Dans le répertoire du projet, vous pouvez exécuter les scripts suivants :
 
 # Lancement du serveur de développement
-```php artisan serve```
+```bash
+php artisan serve
+```
 
 # Exécution des tests
-```php artisan test```
+```bash
+php artisan test
+```
 Structure du projet
 app/ : Contient les fichiers source de l'application Laravel.
 database/migrations/ : Définit la structure des données de l'application en utilisant les migrations Laravel.
 routes/ : Définit les points de terminaison de l'API en associant les routes aux contrôleurs correspondants.
 Configuration de l'environnement
 Assurez-vous d'avoir configuré le fichier .env avec les informations de votre base de données.
-
+```bash 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1 
 DB_PORT=3306
 DB_DATABASE=nom_de_votre_base_de_donnees
 DB_USERNAME=votre_nom_utilisateur
 DB_PASSWORD=votre_mot_de_passe 
-
+```
 Utilisation de l'API
 
 Inscription d'un nouvel utilisateur :
-```curl -X POST -H "Content-Type: application/json" -d '{"name": "votre_nom", "email": "votre_email", "password": "votre_mot_de_passe"}' http://localhost:8000/register```
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"name": "votre_nom", "email": "votre_email", "password": "votre_mot_de_passe"}' http://localhost:8000/register
+```
 
 Connexion d'un utilisateur :
-```curl -X POST -H "Content-Type: application/json" -d '{"email": "votre_email", "password": "votre_mot_de_passe"}' http://localhost:8000/login```
+```bash 
+curl -X POST -H "Content-Type: application/json" -d '{"email": "votre_email", "password": "votre_mot_de_passe"}' http://localhost:8000/login
+```
 
 Récupérer le classement des équipes :
-```curl -X GET http://localhost:8000/classement```
+```bash
+curl -X GET http://localhost:8000/classement
+```
 
 Récupérer les informations d'une équipe :
-```curl -X GET http://localhost:8000/equipe```
+```bash
+curl -X GET http://localhost:8000/equipe
+```
 
 Retourner les informations de l'utilisateur connecté :
-```curl -X GET -H "Authorization: Bearer VOTRE_TOKEN" http://localhost:8000/user```
+```bash
+curl -X GET -H "Authorization: Bearer VOTRE_TOKEN" http://localhost:8000/user
+```
 
 Créer un nouveau post :
-```curl -X POST -H "Authorization: Bearer VOTRE_TOKEN" -H "Content-Type: application/json" -d '{"title": "titre_du_post", "content": "contenu_du_post"}' http://localhost:8000/posts/create```
+```bash
+curl -X POST -H "Authorization: Bearer VOTRE_TOKEN" -H "Content-Type: application/json" -d '{"title": "titre_du_post", "content": "contenu_du_post"}' http://localhost:8000/posts/create
+```
 
 Auteur
 Louis
