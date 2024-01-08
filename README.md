@@ -38,18 +38,19 @@ php artisan serve
 php artisan test
 ```
 Structure du projet
+
 app/ : Contient les fichiers source de l'application Laravel.
 database/migrations/ : Définit la structure des données de l'application en utilisant les migrations Laravel.
 routes/ : Définit les points de terminaison de l'API en associant les routes aux contrôleurs correspondants.
+
 Configuration de l'environnement
-Assurez-vous d'avoir configuré le fichier .env avec les informations de votre base de données.
 ```bash 
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1 
+DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=nom_de_votre_base_de_donnees
-DB_USERNAME=votre_nom_utilisateur
-DB_PASSWORD=votre_mot_de_passe 
+DB_DATABASE=db_ligue1
+DB_USERNAME=louis
+DB_PASSWORD=1fK1gb4k
 ```
 Utilisation de l'API
 
@@ -82,6 +83,8 @@ Créer un nouveau post :
 ```bash
 curl -X POST -H "Authorization: Bearer VOTRE_TOKEN" -H "Content-Type: application/json" -d '{"title": "titre_du_post", "content": "contenu_du_post"}' http://localhost:8000/posts/create
 ```
+
+[Uploading Api_Route_Insomina…]()
 
 Auteur
 Louis
