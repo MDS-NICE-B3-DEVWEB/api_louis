@@ -24,7 +24,7 @@ Route::get('posts', [PostController::class, 'index']);
 Route::post('/register', [UserController::class, 'register']);
 
 //Connexion d'un utilisateur
-Route::post('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login']);
 
 //Recup les equipes
 Route::get('/classement', [ClassementController::class, 'classementApi']);
