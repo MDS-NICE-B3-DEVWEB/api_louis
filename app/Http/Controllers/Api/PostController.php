@@ -67,26 +67,49 @@ class PostController extends Controller
         }
    }
 
-   public function update(EditPostRequest $request,Post  $post)
-   {
+   public function update(EditPostRequest $request, Post $post)
+{
+    // Vérifier si l'utilisateur est authentifié
+    if (auth()->check()) {
+        $user = auth()->user();
 
-    // on modifie un post
-        try{
-            $post->titre = $request->titre;
-            $post->description = $request->description;
-            $post->save();
+        // Vérifier si l'utilisateur est le propriétaire du post
+        if ($user->id === $post->user_id) {
+            // Modifier le post
+            try {
+                $post->titre = $request->titre;
+                $post->description = $request->description;
+                $post->save();
+
+                return response()->json([
+                    'status_code' => 200,
+                    'success' => true,
+                    'message' => 'Post modifié ',
+                    'data' => $post,
+                ]);
+            } catch (Exception $e) {
+                return response()->json([
+                    'status_code' => 500,
+                    'message' => 'Erreur lors de la modification du post.',
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        } else {
+            // L'utilisateur n'est pas le propriétaire du post
             return response()->json([
-                'status_code' => 200, 
-                'success' => true,
-                'message' => 'Post modifié ',
-                'data' => $post,
+                'status_code' => 403,
+                'message' => 'Vous n\'êtes pas autorisé à modifier ce post.',
             ]);
         }
-        catch(Exception $e){
-            return response()->json($e);
-        }
+    } else {
+        // L'utilisateur n'est pas authentifié
+        return response()->json([
+            'status_code' => 401,
+            'message' => 'Vous devez être connecté pour modifier un post.',
+        ]);
+    }
+}
 
-   }
 
    public function destroy(Post $post)
 {
