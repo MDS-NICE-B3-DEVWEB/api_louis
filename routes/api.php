@@ -4,7 +4,8 @@ use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\EquipeController;
+use App\Http\Controllers\Api\ClassementController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
 Route::get('posts', [PostController::class, 'index']);
 
 // Route pour Modifier un post
@@ -29,6 +31,10 @@ Route::post('/register', [UserController::class, 'register']);
 //Connexion d'un utilisateur
 Route::post('/login', [UserController::class, 'login']);
 
+//Recup les equipes
+Route::get('/classement', [ClassementController::class, 'classementApi']);
+
+Route::get('/equipe', [EquipeController::class, 'equipeApi']);
 
 Route::middleware('auth:sanctum')->group(function () {
     

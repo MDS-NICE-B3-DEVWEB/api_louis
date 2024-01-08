@@ -1,0 +1,22 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import BurgerMenu from './BurgerMenu';  // Assurez-vous d'importer BurgerMenu
+// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';  // Assurez-vous d'importer Link
+
+ReactDOM.render(
+  <Router>
+    <div>
+      <Route exact path="/app" component={App} />
+      <Route path="/burger" component={BurgerMenu} />
+    </div>
+  </Router>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
