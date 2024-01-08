@@ -84,7 +84,8 @@ Créer un nouveau post :
 curl -X POST -H "Authorization: Bearer VOTRE_TOKEN" -H "Content-Type: application/json" -d '{"title": "titre_du_post", "content": "contenu_du_post"}' http://localhost:8000/posts/create
 ```
 
-[Uploading Api_Route_Insomina…]()
+Collection des routes API PostMan/Insomnia ...
+[Api_Route_Insomina…] 
 
 Auteur
 Louis
