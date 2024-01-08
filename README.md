@@ -7,7 +7,9 @@ Bienvenue dans le backend de l'application Ligue1 ! Cette partie du projet est c
 Assurez-vous d'avoir PHP, Composer, et MySQL installés sur votre machine.
 
 # Installation des dépendances
-```bash composer install```
+```bash 
+composer install
+```
 
 # Configuration de l'environnement
 ```cp .env.example .env```
