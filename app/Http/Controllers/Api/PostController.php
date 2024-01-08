@@ -89,30 +89,43 @@ class PostController extends Controller
    }
 
    public function destroy(Post $post)
-   {
+{
+    // Vérifier si l'utilisateur est authentifié
+    if (auth()->check()) {
+        $user = auth()->user();
 
-    // on supprime un post
-        try{
-            if($post){
-                
-            $post->delete();
+        // Vérifier si l'utilisateur est le propriétaire du post
+        if ($user->id === $post->user_id) {
+            // Supprimer le post
+            try {
+                $post->delete();
+
+                return response()->json([
+                    'status_code' => 200,
+                    'success' => true,
+                    'message' => 'Post supprimé ',
+                    'data' => $post,
+                ]);
+            } catch (Exception $e) {
+                return response()->json([
+                    'status_code' => 500,
+                    'message' => 'Erreur lors de la suppression du post.',
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        } else {
+            // L'utilisateur n'est pas le propriétaire du post
             return response()->json([
-                'status_code' => 200, 
-                'success' => true,
-                'message' => 'Post supprimé ',
-                'data' => $post,
+                'status_code' => 403,
+                'message' => 'Vous n\'êtes pas autorisé à supprimer ce post.',
             ]);
         }
-        else{
-            
-            return response()->json([
-                'status_code' => 422, 
-                'message' => 'Post non trouvé ',
-            ]);
-        }
-        }
-        catch(Exception $e){
-            return response()->json($e);
-        }
-   }
+    } else {
+        // L'utilisateur n'est pas authentifié
+        return response()->json([
+            'status_code' => 401,
+            'message' => 'Vous devez être connecté pour supprimer un post.',
+        ]);
+    }
+}
 }
