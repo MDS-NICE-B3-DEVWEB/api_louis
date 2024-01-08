@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-
+use Illuminate\Http\Response; // Import the Response class
 class ClassementController extends Controller
 {
     public function classementApi(Request $request)
@@ -53,7 +53,7 @@ class ClassementController extends Controller
                 'success' => true,
                 'message' => 'Liste des equipes',
                 'items' => $equipes,
-            ]);
+            ], 200); // Use the response helper function with the correct status code
         }
 
         return response()->json([
@@ -61,6 +61,6 @@ class ClassementController extends Controller
             'success' => false,
             'message' => 'Aucun participant trouvé',
             'items' => null,
-        ]);
+        ], 404); // Use the response helper function with the correct status code
     }
 }

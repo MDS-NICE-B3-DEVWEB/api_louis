@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
+use GuzzleHttp\Client; // Add this import statement
 
 class EquipeController extends Controller
 {
@@ -25,13 +25,11 @@ class EquipeController extends Controller
 
             
 
-            return response()->json([
-                'status_code' => 200, 
-                'success' => true,
-                'message' => 'Liste des equipes',
-                'items' => $dataArray,
-            ]);
-     }
+        return response()->json([
+            'status_code' => 200, 
+            'success' => true,
+            'message' => 'Liste des equipes',
+            'items' => $dataArray,
+        ]);
+    }
 }
-
- 
