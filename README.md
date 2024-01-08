@@ -1,42 +1,75 @@
-# Nom de Votre Projet
 
-## Introduction
+Ligue1 Backend (Laravel)
+Bienvenue dans le backend de l'application Ligue1 ! Cette partie du projet est construite avec Laravel pour fournir une API robuste et sécurisée.
 
-Bienvenue dans le projet XYZ ! Ce projet est une API Laravel pour la gestion d'une ligue sportive.
+Configuration initiale
+Assurez-vous d'avoir PHP, Composer, et MySQL installés sur votre machine.
 
-## Architecture du Projet
-
-Le projet suit une structure modulaire pour maintenir la clarté et la facilité d'extension. Voici une brève explication des différents dossiers et fichiers :
-
-- `config/` : Contient les fichiers de configuration pour l'application.
-- `app/Http/Controllers/` : Gère la logique métier de l'application. Chaque fichier correspond généralement à une entité de l'API.
-- `app/Http/Middleware/` : Contient les middlewares, tels que l'authentification.
-- `database/migrations/` : Définit la structure des données de l'application en utilisant les migrations Laravel pour interagir avec la base de données.
-- `routes/` : Définit les points de terminaison de l'API en associant les routes aux contrôleurs correspondants.
-
-## Configuration de l'environnement
-
-Clonez ce référentiel sur votre machine locale.
-
-```bash
-git clone <url-du-repo>
+bash
+Copy code
+# Installation des dépendances
 composer install
 
-Créez un fichier .env à la racine du projet et ajoutez les variables suivantes.
+# Configuration de l'environnement
+cp .env.example .env
+
+# Génération de la clé d'application
+php artisan key:generate
+
+# Exécution des migrations pour créer la structure de la base de données
+php artisan migrate
+Scripts disponibles
+Dans le répertoire du projet, vous pouvez exécuter les scripts suivants :
+
+bash
+Copy code
+# Lancement du serveur de développement
+php artisan serve
+
+# Exécution des tests
+php artisan test
+Structure du projet
+app/ : Contient les fichiers source de l'application Laravel.
+database/migrations/ : Définit la structure des données de l'application en utilisant les migrations Laravel.
+routes/ : Définit les points de terminaison de l'API en associant les routes aux contrôleurs correspondants.
+Configuration de l'environnement
+Assurez-vous d'avoir configuré le fichier .env avec les informations de votre base de données.
+
+bash
+Copy code
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=homestead
-DB_USERNAME=homestead
-DB_PASSWORD=secret
-
-Exécutez les migrations pour créer la structure de la base de données.
-php artisan migrate
-
-Exécutez l'application.
-php artisan serve
-
+DB_DATABASE=nom_de_votre_base_de_donnees
+DB_USERNAME=votre_nom_utilisateur
+DB_PASSWORD=votre_mot_de_passe
 Utilisation de l'API
 Inscription d'un nouvel utilisateur :
+bash
+Copy code
 curl -X POST -H "Content-Type: application/json" -d '{"name": "votre_nom", "email": "votre_email", "password": "votre_mot_de_passe"}' http://localhost:8000/register
+Connexion d'un utilisateur :
+bash
+Copy code
+curl -X POST -H "Content-Type: application/json" -d '{"email": "votre_email", "password": "votre_mot_de_passe"}' http://localhost:8000/login
+Récupérer le classement des équipes :
+bash
+Copy code
+curl -X GET http://localhost:8000/classement
+Récupérer les informations d'une équipe :
+bash
+Copy code
+curl -X GET http://localhost:8000/equipe
+Retourner les informations de l'utilisateur connecté :
+bash
+Copy code
+curl -X GET -H "Authorization: Bearer VOTRE_TOKEN" http://localhost:8000/user
+Créer un nouveau post :
+bash
+Copy code
+curl -X POST -H "Authorization: Bearer VOTRE_TOKEN" -H "Content-Type: application/json" -d '{"title": "titre_du_post", "content": "contenu_du_post"}' http://localhost:8000/posts/create
+Auteur
+CAN (Code Anything Now)
 
+Licence
+Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
