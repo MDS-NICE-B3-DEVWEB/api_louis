@@ -66,7 +66,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "votre_email", "p
 
 Récupérer le classement des équipes :
 ```bash
-curl -X GET -d '{"id_saison": "id de la saison en int (269 pour la saison 2023-2024"} http://164.90.163.120:8000/api/classement
+curl -X GET -d '{"id_saison": "id de la saison en int (269 pour la saison 2023-2024/ 167 pour la saison 2022-2023)"} http://164.90.163.120:8000/api/classement
 ```
 
 Récupérer les informations d'une équipe :
