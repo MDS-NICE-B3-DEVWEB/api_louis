@@ -48,9 +48,9 @@ Configuration de l'environnement
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=db_ligue1
-DB_USERNAME=louis
-DB_PASSWORD=1fK1gb4k
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
 ```
 Utilisation de l'API
 
