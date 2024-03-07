@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
+
 class RegisterUser extends FormRequest
 {
     /**
@@ -27,10 +28,11 @@ class RegisterUser extends FormRequest
             // on donne les regles de validation
             'name' => 'required',
             'email' => 'required|unique:users,email',
-            'password' => 'required',
+            'password'=> 'required|string|min:3|max:25',
         ];
     }
-        public function failedValidation(validator $validator)
+
+        public function failedValidation(Validator $validator)
         {
             // on envoie une reponse json avec les erreurs
             throw new HttpResponseException(response()->json([
